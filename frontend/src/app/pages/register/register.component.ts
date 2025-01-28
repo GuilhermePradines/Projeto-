@@ -5,8 +5,8 @@ import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-register',
-  standalone: true, 
-  imports: [FormsModule, RouterModule], 
+  standalone: true,
+  imports: [FormsModule, RouterModule],  
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
@@ -26,8 +26,15 @@ export class RegisterComponent {
 
     this.authService.register({ email: this.email, username: this.username, password: this.password, confirmPassword: this.confirmPassword })
       .subscribe({
-        next: () => alert('User registered successfully'),
-        error: () => alert('Error registering user')
+        next: () => {
+          alert('User registered successfully');
+          
+        },
+        error: (err) => {
+          console.error('Error during registration:', err);
+         
+        }
       });
   }
 }
+
