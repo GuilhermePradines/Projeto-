@@ -21,6 +21,7 @@ export class LoginComponent {
     this.authService.login({ username:this.username, password:this.password }).subscribe({
       next: (response) => {
         localStorage.setItem('token', response.token);
+        console.log('Token salvo no localStorage:', response.token);
         this.router.navigate(['/home']);
       },
       error: () => alert('Invalid credentials')

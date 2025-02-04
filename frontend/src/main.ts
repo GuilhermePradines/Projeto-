@@ -4,7 +4,7 @@ import { AppComponent } from './app/app.component';
 import { routes } from './app/app.routes';
 import { importProvidersFrom } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { provideHttpClient } from '@angular/common/http';
+import { HttpClient, provideHttpClient } from '@angular/common/http';
 
 bootstrapApplication(AppComponent, {
   providers: [

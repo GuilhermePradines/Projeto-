@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -25,4 +25,21 @@ export class AuthService {
   login(user: { username: string; password: string }): Observable<LoginResponse> {
     return this.http.post<LoginResponse>(`${this.apiUrl}/login`, user);
   }
+
+
+  getAuthToken() {
+    const token = localStorage.getItem('token');
+    console.log('Token:', token);  // Verifique se o token está sendo obtido corretamente
+    return token;
+  }
+
+  loadAppliances(): Observable<any> {
+    const token = this.getAuthToken();
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get(`${this.apiUrl}/appliances`, { headers });
+  }
+
+
 }
+
+

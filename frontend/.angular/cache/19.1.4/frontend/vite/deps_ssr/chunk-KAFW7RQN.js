@@ -5,10 +5,10 @@ import {
   DomRendererFactory2,
   EVENT_MANAGER_PLUGINS,
   EventManagerPlugin
-} from "./chunk-M2HNWGFN.js";
+} from "./chunk-IQR53VJN.js";
 import {
   HTTP_ROOT_INTERCEPTOR_FNS
-} from "./chunk-R3SPMMRM.js";
+} from "./chunk-S7EJFDHQ.js";
 import {
   DOCUMENT,
   NullViewportScroller,
@@ -18,7 +18,7 @@ import {
   XhrFactory,
   getDOM,
   setRootDomAdapter
-} from "./chunk-YKQ5QFQZ.js";
+} from "./chunk-KJBLNTLG.js";
 import {
   ALLOW_MULTIPLE_PLATFORMS,
   ANIMATION_MODULE_TYPE,
@@ -21565,4 +21565,4 @@ export {
    * License: MIT
    *)
 */
-//# sourceMappingURL=chunk-5P5RYYAD.js.map
+//# sourceMappingURL=chunk-KAFW7RQN.js.map
