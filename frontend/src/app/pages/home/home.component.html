@@ -1,17 +1,22 @@
-<h2>Meus Eletrodomésticos</h2>
-<ul>
-  <li *ngFor="let appliance of appliances">
-    {{ appliance.name }} - Consumo mensal: {{ appliance.power * appliance.hours_per_day * appliance.days_per_month / 1000 }} kWh 
-    - Custo: R$ {{ (appliance.power * appliance.hours_per_day * appliance.days_per_month / 1000 * electricityRate) | number:'1.2-2' }}
-  </li>
-</ul>
+<div class="Home-container">
+  <button (click)="logout()">Logout</button>
+  <div>
+    <h2>Meus Eletrodomésticos</h2>
+    <ul>
+      <li *ngFor="let appliance of appliances">
+        {{ appliance.name }} - Consumo mensal: {{ appliance.power * appliance.hours_per_day * appliance.days_per_month / 1000 }} kWh
+        - Custo: R$ {{ (appliance.power * appliance.hours_per_day * appliance.days_per_month / 1000 * electricityRate) | number:'1.2-2' }}
 
-<!-- Exibe o consumo total e o custo total -->
-<h3>Consumo Total: {{ totalConsumption | number:'1.2-2' }} kWh</h3>
-<h3>Custo Total: R$ {{ totalCost | number:'1.2-2' }}</h3>
+        <!-- Botões de editar e excluir -->
+        
+        <button (click)="deleteAppliance(appliance.id)">Excluir</button>
+      </li>
+    </ul>
 
-<a routerLink="/add-appliance">Adicionar Eletrodoméstico</a>
+    <h3>Consumo Total: {{ totalConsumption | number:'1.2-2' }} kWh</h3>
+    <h3>Custo Total: R$ {{ totalCost | number:'1.2-2' }}</h3>
 
-<!-- Botão de Logout -->
-<button (click)="logout()">Logout</button>
+    <a routerLink="/add-appliance">Adicionar Eletrodoméstico</a>
 
+  </div>
+</div>

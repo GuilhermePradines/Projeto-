@@ -17,6 +17,10 @@ export class AddApplianceComponent {
   hours_per_day = 0;
   days_per_month = 0;
 
+
+
+
+  
   constructor(private applianceService: ApplianceService, private router: Router) {}
 
   addAppliance() {

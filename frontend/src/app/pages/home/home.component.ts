@@ -16,12 +16,12 @@ import { HttpHeaders } from '@angular/common/http';
 export class HomeComponent implements OnInit {
   appliances: any[] = [];
   electricityRate: number = 0.85;
-  totalConsumption: number = 0; // Variável para o consumo total
-  totalCost: number = 0; // Variável para o custo total
+  totalConsumption: number = 0;
+  totalCost: number = 0;
 
   constructor(
     private applianceService: ApplianceService,
-    private router: Router // Injete o Router
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -38,10 +38,7 @@ export class HomeComponent implements OnInit {
       return;
     }
 
-    // Cria os cabeçalhos com o token
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-
-    // Carrega os eletrodomésticos passando os cabeçalhos
     this.applianceService.getAppliances(headers).subscribe({
       next: (data) => {
         this.appliances = data;
@@ -58,12 +55,11 @@ export class HomeComponent implements OnInit {
     let totalEnergy = 0;
     let totalCost = 0;
 
-    this.appliances.forEach(appliance => {
-      // Calcula o consumo mensal em kWh de cada aparelho
-      const consumption = appliance.power * appliance.hours_per_day * appliance.days_per_month / 1000;
+    this.appliances.forEach((appliance) => {
+      const consumption =
+        (appliance.power * appliance.hours_per_day * appliance.days_per_month) /
+        1000;
       totalEnergy += consumption;
-
-      // Calcula o custo mensal de cada aparelho
       totalCost += consumption * this.electricityRate;
     });
 
@@ -71,9 +67,29 @@ export class HomeComponent implements OnInit {
     this.totalCost = totalCost;
   }
 
-  // Função para fazer logout
+  // Função para excluir um eletrodoméstico
+  deleteAppliance(id: number) {
+    if (confirm('Tem certeza de que deseja excluir este eletrodoméstico?')) {
+      this.applianceService.deleteAppliance(id).subscribe({
+        next: () => {
+          alert('Eletrodoméstico excluído com sucesso.');
+          this.loadAppliances(); // Recarrega a lista após exclusão
+        },
+        error: (err) => {
+          console.error('Erro ao excluir eletrodoméstico', err);
+          alert('Erro ao excluir o eletrodoméstico.');
+        },
+      });
+    }
+  }
+
+  // Função para editar um eletrodoméstico
+  editAppliance(id: number) {
+    this.router.navigate(['/edit-appliance', id]); // Redireciona para a página de edição
+  }
+
   logout() {
-    localStorage.removeItem('token'); // Remove o token do localStorage
-    this.router.navigate(['/login']); // Redireciona para a página de login
+    localStorage.removeItem('token');
+    this.router.navigate(['/login']);
   }
 }

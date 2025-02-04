@@ -126,4 +126,57 @@ app.post("/appliances", authenticate, (req, res) => {
   });
 });
 
+// Rota para editar um eletrodoméstico
+app.put("/appliances/:id", authenticate, (req, res) => {
+  const applianceId = req.params.id;
+  const { name, power, hours_per_day, days_per_month } = req.body;
+  const userId = req.user.id;
+
+  // Verifica se o aparelho pertence ao usuário
+  const query = "SELECT * FROM appliances WHERE id = ? AND user_id = ?";
+  db.query(query, [applianceId, userId], (err, results) => {
+    if (err) return res.status(500).send('Erro ao verificar o aparelho');
+    if (results.length === 0) {
+      return res.status(404).send('Eletrodoméstico não encontrado ou você não tem permissão para editar');
+    }
+
+    // Atualiza as informações do aparelho
+    const updateQuery = "UPDATE appliances SET name = ?, power = ?, hours_per_day = ?, days_per_month = ? WHERE id = ?";
+    db.query(updateQuery, [name, power, hours_per_day, days_per_month, applianceId], (err, result) => {
+      if (err) return res.status(500).send('Erro ao atualizar o aparelho');
+      res.status(200).send('Eletrodoméstico atualizado com sucesso');
+    });
+  });
+});
+
+app.delete("/appliances/:id", authenticate, (req, res) => {
+  const applianceId = req.params.id;
+  const userId = req.user.id;
+
+  // Verifica se o aparelho existe e pertence ao usuário
+  const query = "SELECT * FROM appliances WHERE id = ? AND user_id = ?";
+  db.query(query, [applianceId, userId], (err, results) => {
+    if (err) {
+      console.error('Erro ao verificar o aparelho:', err);
+      return res.status(500).send('Erro ao verificar o aparelho');
+    }
+    if (results.length === 0) {
+      return res.status(404).send('Eletrodoméstico não encontrado ou você não tem permissão para excluir');
+    }
+
+    // Deleta o aparelho
+    const deleteQuery = "DELETE FROM appliances WHERE id = ?";
+    db.query(deleteQuery, [applianceId], (err, result) => {
+      if (err) {
+        console.error('Erro ao excluir o aparelho:', err);
+        return res.status(500).send('Erro ao excluir o aparelho');
+      }
+      
+      res.status(200).send('Eletrodoméstico excluído com sucesso');
+    });
+  });
+});
+
+
+
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));

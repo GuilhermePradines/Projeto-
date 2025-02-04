@@ -1,0 +1,16 @@
+<h2>Editar Eletrodoméstico</h2>
+<form (ngSubmit)="save()">
+  <label for="name">Nome:</label>
+  <input id="name" [(ngModel)]="appliance.name" name="name" required>
+
+  <label for="power">Potência (W):</label>
+  <input id="power" [(ngModel)]="appliance.power" name="power" type="number" required>
+
+  <label for="hours_per_day">Horas por dia:</label>
+  <input id="hours_per_day" [(ngModel)]="appliance.hours_per_day" name="hours_per_day" type="number" required>
+
+  <label for="days_per_month">Dias por mês:</label>
+  <input id="days_per_month" [(ngModel)]="appliance.days_per_month" name="days_per_month" type="number" required>
+
+  <button type="submit">Salvar</button>
+</form>

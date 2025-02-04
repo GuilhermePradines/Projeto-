@@ -53,6 +53,10 @@ export class ApplianceService {
   }
 
   deleteAppliance(id: number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/${id}`, this.getHeaders());
+    console.log('Deletando aparelho com ID:', id);  // Log para verificar o ID
+    const url = `${this.apiUrl}/${id}`;
+    console.log('URL da requisição de exclusão:', url);  // Log para verificar a URL
+    return this.http.delete(url, this.getHeaders());
   }
+  
 }

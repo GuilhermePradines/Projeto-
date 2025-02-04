@@ -1,21 +1,23 @@
-<h2>Adicionar Eletrodoméstico</h2>
-<form (ngSubmit)="addAppliance()">
-  <div>
-    <label for="name">Nome do Eletrodoméstico:</label>
-    <input type="text" id="name" [(ngModel)]="name" name="name" required />
-  </div>
-  <div>
-    <label for="power">Potência (W):</label>
-    <input type="number" id="power" [(ngModel)]="power" name="power" required />
-  </div>
-  <div>
-    <label for="hours_per_day">Horas de uso por dia:</label>
-    <input type="number" id="hours_per_day" [(ngModel)]="hours_per_day" name="hours_per_day" required />
-  </div>
-  <div>
-    <label for="days_per_month">Dias de uso por mês:</label>
-    <input type="number" id="days_per_month" [(ngModel)]="days_per_month" name="days_per_month" required />
-  </div>
-  <button type="submit">Adicionar Eletrodoméstico</button>
-</form>
-<button routerLink="/home">Voltar para Home</button>
+<div class="AddAppliance-container">
+    <h2>Adicionar Eletrodoméstico</h2>
+    <form (ngSubmit)="addAppliance()">
+    <div>
+        <label for="name">Nome do Eletrodoméstico:</label>
+        <input type="text" id="name" [(ngModel)]="name" name="name" required />
+    </div>
+    <div>
+        <label for="power">Potência (W):</label>
+        <input type="number" id="power" [(ngModel)]="power" name="power" required />
+    </div>
+    <div>
+        <label for="hours_per_day">Horas de uso por dia:</label>
+        <input type="number" id="hours_per_day" [(ngModel)]="hours_per_day" name="hours_per_day" required />
+    </div>
+    <div>
+        <label for="days_per_month">Dias de uso por mês:</label>
+        <input type="number" id="days_per_month" [(ngModel)]="days_per_month" name="days_per_month" required />
+    </div>
+    <button type="submit">Adicionar Eletrodoméstico</button>
+    </form>
+    <button routerLink="/home">Voltar para Home</button>
+</div>
