@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import {Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -16,7 +16,7 @@ export class RegisterComponent {
   password = '';
   confirmPassword = '';
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   register() {
     if (this.password !== this.confirmPassword) {
@@ -26,12 +26,15 @@ export class RegisterComponent {
 
     this.authService.register({ email: this.email, username: this.username, password: this.password, confirmPassword: this.confirmPassword })
       .subscribe({
-        next: () => {
-          alert('User registered successfully');
+        next: (response: any) => {
+          alert(response?.message || "User registered successfully");
+          this.router.navigate(['/login']);
+          
           
         },
         error: (err) => {
           console.error('Error during registration:', err);
+          this.router.navigate(['/login']);
          
         }
       });

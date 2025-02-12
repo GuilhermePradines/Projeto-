@@ -15,7 +15,7 @@ import { HttpHeaders } from '@angular/common/http';
 })
 export class HomeComponent implements OnInit {
   appliances: any[] = [];
-  electricityRate: number = 0.85;
+  electricityRate: number = 0.91;
   totalConsumption: number = 0;
   totalCost: number = 0;
 
@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
 
   loadAppliances() {
     const token = localStorage.getItem('token');
-    console.log('Token obtido:', token);
+    
 
     if (!token) {
       console.error('Token não encontrado!');

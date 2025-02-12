@@ -29,7 +29,7 @@ export class AuthService {
 
   getAuthToken() {
     const token = localStorage.getItem('token');
-    console.log('Token:', token);  // Verifique se o token está sendo obtido corretamente
+      
     return token;
   }
 

@@ -87,7 +87,7 @@ app.post("/register", async (req, res) => {
   const query = "INSERT INTO users (email, username, password) VALUES (?, ?, ?)";
   db.query(query, [email, username, hashedPassword], (err, result) => {
     if (err) return res.status(500).send("Error creating user");
-    res.status(201).send("User registered");
+    res.status(201).json({ message: "User registered" });
   });
 });
 

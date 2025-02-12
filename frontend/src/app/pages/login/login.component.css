@@ -1,3 +1,5 @@
+
+
 .login-container {
     max-width: 400px;
     margin: 50px auto;
@@ -10,7 +12,7 @@
   }
   
   h1 {
-    color: #2ecc71;
+    color: #030303;
     font-size: 24px;
   }
   
@@ -41,7 +43,7 @@
   button {
     width: 100%;
     padding: 10px;
-    background-color: #2ecc71;
+    background-color: #25bfee;
     border: none;
     border-radius: 5px;
     color: white;
@@ -50,7 +52,7 @@
   }
   
   button:hover {
-    background-color: #27ae60;
+    background-color: #0569ff;
   }
   
   .redirect {

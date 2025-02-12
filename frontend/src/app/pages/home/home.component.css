@@ -71,14 +71,29 @@
     font-size: 1em;
     border: none;
     border-radius: 5px;
-    background-color: #f58f29;
+    background-color: #ff0000;
     color: #fff;
     cursor: pointer;
     transition: background-color 0.3s;
   }
+
+  .logout {
+    padding: 8px 15px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+  }
+  .logout:hover {
+    background-color: #0056b3;
+  }
   
   button:hover {
-    background-color: #d87a1f;
+    background-color: #d81f1f;
   }
   
   button:focus {
